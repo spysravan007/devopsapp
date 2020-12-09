@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  kanban-ui:
+    build: .
+    container_name: kanban-ui
+    ports:
+      - 4200:80
+    external_links:
+      - kanban-app
+    networks:
+      - kanbandb_kanban-network
+
+volumes:
+  kanban-data:
+
+networks:
+  kanbandb_kanban-network:
+    external: true

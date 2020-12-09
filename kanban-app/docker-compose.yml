@@ -1,0 +1,24 @@
+version: '2'
+services:
+
+  kanban-app:
+    build: .
+    container_name: kanban-app
+    environment:
+      - DB_SERVER=kanban-postgres
+      - POSTGRES_DB=kanban
+      - POSTGRES_USER=kanban
+      - POSTGRES_PASSWORD=kanban
+    ports:
+      - 8080:8080
+    external_links:
+      - kanban-postgres
+    networks:
+      - kanbandb_kanban-network
+
+volumes:
+  kanban-data:
+
+networks:
+  kanbandb_kanban-network:
+    external: true
